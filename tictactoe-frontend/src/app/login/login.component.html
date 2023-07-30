@@ -1,0 +1,13 @@
+<div class="container w-50 centerize">
+    <h1>TicTacToe</h1>
+    <div class="container w-75">
+        <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="userName" class="form-label">Játékos neve</label>
+                <input type="text" class="form-control" [(ngModel)]="userName" id="userName" name="userName">
+                <div *ngIf="error" class="text-danger mt-2">{{ error }}</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Belépés</button>
+        </form>
+    </div>
+</div>

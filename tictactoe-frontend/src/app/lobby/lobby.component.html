@@ -1,0 +1,14 @@
+<div class="container mt-5">
+
+    <div style="width: fit-content;" class="position-relative">
+        <h3>
+            Üdv, {{userName}}
+        </h3>
+        <span class="position-absolute top-0 start-100 translate-middle p-2 border border-light rounded-circle" [ngClass]="{'bg-danger': !isSearching, 'bg-success': isSearching}">
+
+          </span>
+    </div>
+    <button type="button" class="btn btn-success" (click)="searchMatch()" [ngClass]="{'w-50': !isSearching, 'w-25': isSearching}" [disabled]="isSearching">Játék keresése</button>
+    <button class="btn btn-danger w-25" (click)="cancelSearch()" *ngIf="isSearching">Keresés leállítása</button>
+    <button type="button" class="btn btn-danger w-50" (click)="logout()" [disabled]="isSearching">Kilépés</button>
+</div>

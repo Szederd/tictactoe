@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="container">
+    <h3>{{game?.board?.player1?.user?.userName}} vs {{game?.board?.player2?.user?.userName}}</h3> 
+  </div>
+  <div class="row">
+    <div class="col">
+      <table >
+        <tbody>
+          <tr *ngFor="let row of board; let i = index">
+            <td *ngFor="let cell of row; let j = index" (click)="cellClicked(cell)" [class.disabled]="game?.nextPlayer !== player?.user?.id">
+              {{getMarkAsString(cell.mark)}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <div class="card" [ngClass]="{
+        'disabled bg-warning': game?.nextPlayer !== game?.board?.player1?.user?.id,
+        'bg-success text-white': game?.nextPlayer === game?.board?.player1?.user?.id
+      }">
+        <div class="card-body">
+          <span><h1>{{game?.board?.player1?.user?.userName}} <ng-container *ngIf="game?.board?.player1?.user?.id === userId">(Te)</ng-container>: </h1></span>
+          <span><b>{{getMarkAsString(game?.board?.player1?.mark!)}}</b></span>
+        </div>
+      </div>
+
+      <div class="card" [ngClass]="{
+        'disabled bg-warning': game?.nextPlayer !== game?.board?.player2?.user?.id,
+        'bg-success': game?.nextPlayer === game?.board?.player2?.user?.id
+      }">
+        <div class="card-body">
+          <h1>{{game?.board?.player2?.user?.userName}} <ng-container *ngIf="game?.board?.player2?.user?.id === userId">(Te)</ng-container>: </h1>
+          <span><b>{{getMarkAsString(game?.board?.player2?.mark!)}}</b></span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <button type="button" class="btn btn-danger w-100" (click)="leave()">Kilépés</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

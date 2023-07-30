@@ -1,0 +1,9 @@
+.centerize{
+    position: relative;
+    top: 50vh;
+    transform: translateY(-50%);
+}
+
+h1{
+    margin-bottom: 10vh;
+}
